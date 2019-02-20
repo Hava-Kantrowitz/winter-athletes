@@ -1,289 +1,253 @@
-package Homework1;
-
 import static org.junit.Assert.*;
 
+import java.util.LinkedList;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class Examples {
-
-	// tests the points obtained by a skier
+	
+	SkiingResult skiing1 = new SkiingResult(2, 25, 30.2, 27.3, 26.4, 0);
+	LinkedList<ShootingRound>shooting1 = new LinkedList<ShootingRound>();
+	ShootingResult shooter1 = new ShootingResult(shooting1);
+	ShootingRound round1 = new ShootingRound(3, true);
+	ShootingRound round2 = new ShootingRound(4, true);
+	ShootingRound round3 = new ShootingRound(2, true);
+	ShootingRound round4 = new ShootingRound(5, false);
+	ShootingRound round5 = new ShootingRound(3, false);
+	ShootingRound round6 = new ShootingRound(4, true);
+	ShootingRound round7 = new ShootingRound(5, false);
+	FinalResult final1 = new FinalResult(shooter1, skiing1);
+	Athlete athlete1 = new Athlete(final1, "Joseph");
+	
+	SkiingResult skiing2J = new SkiingResult(0,0.0,0.0,0.0,0.0,0);
+	FinalResult final2 = new FinalResult(shooter1, skiing2J);
+	Athlete athlete2 = new Athlete(final2, "Sam");
+	
+	LinkedList<ShootingRound>shooting2 = new LinkedList<ShootingRound>();
+	ShootingResult shooter2 = new ShootingResult(shooting2);
+	FinalResult final3 = new FinalResult(shooter2, skiing1);
+	Athlete athlete3 = new Athlete(final3, "Simon");
+	
+	LinkedList<ShootingRound>shooting3 = new LinkedList<ShootingRound>();
+	ShootingResult shooter3 = new ShootingResult(shooting3);
+	FinalResult final4 = new FinalResult(shooter3, skiing1);
+	Athlete athlete4 = new Athlete(final4, "Evan");
+	
+	LinkedList<ShootingRound>shooting4 = new LinkedList<ShootingRound>();
+	ShootingResult shooter4 = new ShootingResult(shooting4);
+	FinalResult final5 = new FinalResult(shooter4, skiing1);
+	Athlete athlete5 = new Athlete(final5, "Evan");
+	
+	LinkedList<Athlete>athleteList1 = new LinkedList<Athlete>();
+	Competition comp1 = new Competition(5, athleteList1);
+	LinkedList<Athlete>athletesToFinish = new LinkedList<Athlete>();
+	Competition comp2 = new Competition (1, athleteList1);
+	
+	Athlete athlete1Same = new Athlete(final1, "Joseph");
+	
+	SkiingResult skiing1Worse = new SkiingResult(9, 500, 500, 300, 300, 6);
+	FinalResult final1Worse = new FinalResult(shooter1, skiing1Worse);
+	Athlete athlete1Worse = new Athlete(final1Worse, "Joseph");
+	
+	SkiingResult skiing1Better = new SkiingResult(1, 1, 1, 1, 1, 6);
+	FinalResult final1Better = new FinalResult(shooter1, skiing1Better);
+	Athlete athlete1Better = new Athlete(final1Better, "Joseph");
+	
+	LinkedList<Athlete>joeSamePlaceSame = new LinkedList<Athlete>();
+	LinkedList<Athlete>joeSamePlaceBetter = new LinkedList<Athlete>();
+	LinkedList<Athlete>joeSamePlaceWorse = new LinkedList<Athlete>();
+	
+	LinkedList<Athlete>joeDiffPlaceSame = new LinkedList<Athlete>();
+	LinkedList<Athlete>joeDiffPlaceBetter = new LinkedList<Athlete>();
+	LinkedList<Athlete>joeDiffPlaceWorse = new LinkedList<Athlete>();
+	
+	Competition joeStaysSame = new Competition(3, joeSamePlaceSame);
+	Competition joeStaysBetter = new Competition(3, joeSamePlaceBetter);
+	Competition joeStaysWorse = new Competition(3, joeSamePlaceWorse);
+	Competition joeMoveSame = new Competition(3, joeDiffPlaceSame);
+	Competition joeMoveBetter = new Competition(3, joeDiffPlaceBetter);
+	Competition joeMoveWorse = new Competition(3, joeDiffPlaceWorse);
+	
+	public Examples() {
+		shooting1.add(round1);
+		shooting1.add(round2);
+		shooting1.add(round3);
+		shooting1.add(round4);
+		shooting1.add(round5);
+		
+		shooting2.add(round1);
+		shooting2.add(round2);
+		shooting2.add(round4);
+		shooting2.add(round5);
+		shooting2.add(round6);
+		shooting2.add(round7);
+		
+		shooting3.add(round1);
+		shooting3.add(round2);
+		shooting3.add(round3);
+		shooting3.add(round6);
+		
+		shooting4.add(round4);
+		shooting4.add(round5);
+		shooting4.add(round7);
+		
+		athleteList1.add(athlete1);
+		athleteList1.add(athlete2);
+		athleteList1.add(athlete3);
+		athleteList1.add(athlete4);
+		athleteList1.add(athlete5);
+		
+		athletesToFinish.add(athlete4);
+		athletesToFinish.add(athlete5);
+		
+		joeSamePlaceSame.add(athlete1Same);
+		joeSamePlaceSame.add(athlete2);
+		joeSamePlaceSame.add(athlete3);
+		joeSamePlaceSame.add(athlete4);
+		joeSamePlaceSame.add(athlete5);
+		
+		joeSamePlaceBetter.add(athlete1Better);
+		joeSamePlaceBetter.add(athlete2);
+		joeSamePlaceBetter.add(athlete3);
+		joeSamePlaceBetter.add(athlete4);
+		joeSamePlaceBetter.add(athlete5);
+		
+		joeSamePlaceWorse.add(athlete1Worse);
+		joeSamePlaceWorse.add(athlete2);
+		joeSamePlaceWorse.add(athlete3);
+		joeSamePlaceWorse.add(athlete4);
+		joeSamePlaceWorse.add(athlete5);
+		
+		joeDiffPlaceSame.add(athlete5);
+		joeDiffPlaceSame.add(athlete2);
+		joeDiffPlaceSame.add(athlete3);
+		joeDiffPlaceSame.add(athlete4);
+		joeDiffPlaceSame.add(athlete1Same);
+		
+		joeDiffPlaceBetter.add(athlete3);
+		joeDiffPlaceBetter.add(athlete2);
+		joeDiffPlaceBetter.add(athlete1Better);
+		joeDiffPlaceBetter.add(athlete4);
+		joeDiffPlaceBetter.add(athlete5);
+		
+		joeDiffPlaceWorse.add(athlete2);
+		joeDiffPlaceWorse.add(athlete1Worse);
+		joeDiffPlaceWorse.add(athlete3);
+		joeDiffPlaceWorse.add(athlete4);
+		joeDiffPlaceWorse.add(athlete5);
+		
+		
+		
+		
+	}
+	
+	// test the points earned while skiing
 	@Test
 	public void testSkiingPoints() {
-		SkiingResult skiResult1 = new SkiingResult(1, 2.8, 3.4, 4.5, 1.2, 0);
-		assertEquals(skiResult1.pointsEarned(), 11.9, .1);
+		assertEquals(athlete1.finalScore.skiingFinal.pointsEarned(), 108.9, .1);
 	}
 	
-	// tests the points obtained by a shooter
+	// test the points earned while skiing, when the athlete didn't ski
+	@Test
+	public void testNoSkiingPoints() {
+		assertEquals(athlete2.finalScore.skiingFinal.pointsEarned(), 0, .1);
+	}
+	
+	// test the points earned while shooting
 	@Test
 	public void testShootingPoints() {
-		ShootingRound round1 = new ShootingRound(5);
-		ShootingRound round2 = new ShootingRound(7);
-		ShootingRound round3 = new ShootingRound(6);
-		ShootingRound round4 = new ShootingRound(8);
-		ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-		assertEquals(shootResult1.pointsEarned(), 26, 0);
+		assertEquals(athlete1.finalScore.shootingFinal.pointsEarned(), 17, .1);
 	}
 	
-	// tests the penalties obtained by a skier
+	// tests finding the best round of prone shooting
 	@Test
-	public void testSkiingPenalties() {
-		SkiingResult skiResult1 = new SkiingResult(1, 2.8, 3.4, 4.5, 1.2, 0);
-		assertEquals(skiResult1.getPenalties(), 0, .1);
+	public void testBestProneShooting() {
+		assertEquals(athlete1.finalScore.shootingFinal.bestRoundByType(false), round4);
 	}
 	
-	// tests the penalties obtained by a shooter
+	// tests finding the best round of standing shooting 
 	@Test
-	public void testShootingPenalties() {
-		ShootingRound round1 = new ShootingRound(5);
-		ShootingRound round2 = new ShootingRound(4);
-		ShootingRound round3 = new ShootingRound(4);
-		ShootingRound round4 = new ShootingRound(5);
-		ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-		assertEquals(shootResult1.getPenalties(), 120, 0);
+	public void testbestStandingShooting() {
+		assertEquals(athlete1.finalScore.shootingFinal.bestRoundByType(true), round2);
 	}
 	
-	// tests the final score obtained by a first-place finisher
+	// tests finding the best round of prone shooting when the best is a tie
 	@Test
-	public void testFirstScore() {
-		ShootingRound round1 = new ShootingRound(5);
-		ShootingRound round2 = new ShootingRound(4);
-		ShootingRound round3 = new ShootingRound(4);
-		ShootingRound round4 = new ShootingRound(5);
-		ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-		SkiingResult skiResult1 = new SkiingResult(1, 2.8, 3.4, 4.5, 1.2, 0);
-		FinalResult final1 = new FinalResult(shootResult1, skiResult1);
-		assertEquals(final1.finalScore(), 121.9, .1);
+	public void testbestProneShootingTie() {
+		assertEquals(athlete3.finalScore.shootingFinal.bestRoundByType(false), round7);
 	}
 	
-	// tests the final score obtained by a second-place finisher
-		@Test
-		public void testSecondScore() {
-			ShootingRound round1 = new ShootingRound(5);
-			ShootingRound round2 = new ShootingRound(4);
-			ShootingRound round3 = new ShootingRound(3);
-			ShootingRound round4 = new ShootingRound(3);
-			ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-			SkiingResult skiResult1 = new SkiingResult(2, 15.0, 20.0, 14.2, 16.7, 5);
-			FinalResult final1 = new FinalResult(shootResult1, skiResult1);
-			assertEquals(final1.finalScore(), 383.9, .1);
-		}
+	// tests finding the best round of standing shooting when the best is a tie
+	@Test
+	public void testbestStandingShootingTie() {
+		assertEquals(athlete3.finalScore.shootingFinal.bestRoundByType(true), round6);
+	}
+	
+	// tests finding the best round of standing with no standing rounds
+	@Ignore
+	public void testBestStandingNoStanding() {
+		assertEquals(athlete5.finalScore.shootingFinal.bestRoundByType(true), null);
+	}
+	
+	// tests finding the best round of prone with no prone rounds 
+	@Ignore
+	public void testBestProneNoProne() {
+		assertEquals(athlete4.finalScore.shootingFinal.bestRoundByType(false), null);
+	}
+	
+	// tests the creation of a list where some athletes haven't finished shooting
+	@Test
+	public void testShootingNotFinished() {
+		assertEquals(comp1.shootingDNF(), athletesToFinish);
+	}
+	
+	// tests the creation of a list where all athletes have finished shooting
+	@Ignore
+	public void testShootingFinished() {
+		assertEquals(comp2.shootingDNF(), null);
+	}
+	
+	// returns the final score of a specific athlete 
+	@Test
+	public void testSpecificAthlete() {
+		assertEquals(comp1.finalScoreForAthlete("Joseph"), final1);
+	}
+	
+	// tests improvement when the athlete has improved and is in the same place in both lists
+	@Test
+	public void testImprovementSamePlace() {
+		assertTrue(comp1.anyImprovement(joeStaysBetter));
+	}
+	
+	// tests improvement when the athlete has stayed the same and is in the same place in both lists
+	@Test
+	public void testNoImprovementSamePlace() {
+		assertFalse(comp1.anyImprovement(joeStaysSame));
+	}
+	
+	// tests improvement when the athlete has regressed and is in the same place in both lists
+	@Test
+	public void testRegressionSamePlace() {
+		assertFalse(comp1.anyImprovement(joeStaysWorse));
+	}
+	
+	// tests improvement when the athlete has improved and is in different places in both lists
+	@Test
+	public void testImprovementDiffPlace() {
+		assertTrue(comp1.anyImprovement(joeMoveBetter));
+	}
+	
+	// tests improvement when the athlete has stayed the same and is in different places in both lists
+	@Test
+	public void testNoImprovementDiffPlace() {
+		assertFalse(comp1.anyImprovement(joeMoveSame));
+	}
 		
-		// tests the final score obtained by a third-place finisher
-				@Test
-				public void testThirdScore() {
-					ShootingRound round1 = new ShootingRound(5);
-					ShootingRound round2 = new ShootingRound(4);
-					ShootingRound round3 = new ShootingRound(3);
-					ShootingRound round4 = new ShootingRound(3);
-					ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-					SkiingResult skiResult1 = new SkiingResult(3, 15.0, 20.0, 14.2, 16.7, 5);
-					FinalResult final1 = new FinalResult(shootResult1, skiResult1);
-					assertEquals(final1.finalScore(), 387.9, .1);
-				}
-				
-				// tests the final score obtained by a fourth-place finisher
-				@Test
-				public void testFourthScore() {
-					ShootingRound round1 = new ShootingRound(5);
-					ShootingRound round2 = new ShootingRound(4);
-					ShootingRound round3 = new ShootingRound(3);
-					ShootingRound round4 = new ShootingRound(3);
-					ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-					SkiingResult skiResult1 = new SkiingResult(4, 15.0, 20.0, 14.2, 16.7, 5);
-					FinalResult final1 = new FinalResult(shootResult1, skiResult1);
-					assertEquals(final1.finalScore(), 389.9, .1);
-				}
-				
-				// tests the final score obtained by a further-place finisher
-				@Test
-				public void testFurtherScore() {
-					ShootingRound round1 = new ShootingRound(5);
-					ShootingRound round2 = new ShootingRound(4);
-					ShootingRound round3 = new ShootingRound(3);
-					ShootingRound round4 = new ShootingRound(3);
-					ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-					SkiingResult skiResult1 = new SkiingResult(7, 15.0, 20.0, 14.2, 16.7, 5);
-					FinalResult final1 = new FinalResult(shootResult1, skiResult1);
-					assertEquals(final1.finalScore(), 390.9, .1);
-				}
-	
-	
-	// tests when the original athlete is a better skier
+	// tests improvement when the athlete has regressed and is in different places in both lists
 	@Test
-	public void testBetterSkier() {
-		SkiingResult skiResult1 = new SkiingResult(1, 2.8, 3.4, 4.5, 1.2, 0);
-		ShootingRound round1 = new ShootingRound(5);
-		ShootingRound round2 = new ShootingRound(4);
-		ShootingRound round3 = new ShootingRound(4);
-		ShootingRound round4 = new ShootingRound(5);
-		ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-		FinalResult final1 = new FinalResult(shootResult1, skiResult1);
-		Athlete athlete1 = new Athlete(final1);
-		SkiingResult skiResult2 = new SkiingResult(2, 7, 13.2, 14.5, 8, 2);
-		ShootingRound Around1 = new ShootingRound(2);
-		ShootingRound Around2 = new ShootingRound(2);
-		ShootingRound Around3 = new ShootingRound(2);
-		ShootingRound Around4 = new ShootingRound(2);
-		ShootingResult shootResult2 = new ShootingResult(Around1, Around2, Around3, Around4);
-		FinalResult final2 = new FinalResult(shootResult2, skiResult2);
-		Athlete athlete2 = new Athlete(final2);
-		assertTrue(athlete1.betterSkiier(athlete2));
+	public void testRegressionDiffPlace() {
+		assertFalse(comp1.anyImprovement(joeMoveWorse));
 	}
-	
-	// tests when the original athlete is a worse skier
-	@Test
-	public void testWorseSkier() {
-		SkiingResult skiResult1 = new SkiingResult(1, 2.8, 3.4, 4.5, 1.2, 0);
-		ShootingRound round1 = new ShootingRound(5);
-		ShootingRound round2 = new ShootingRound(4);
-		ShootingRound round3 = new ShootingRound(4);
-		ShootingRound round4 = new ShootingRound(5);
-		ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-		FinalResult final1 = new FinalResult(shootResult1, skiResult1);
-		Athlete athlete1 = new Athlete(final1);
-		SkiingResult skiResult2 = new SkiingResult(2, 7, 13.2, 14.5, 8, 2);
-		ShootingRound Around1 = new ShootingRound(2);
-		ShootingRound Around2 = new ShootingRound(2);
-		ShootingRound Around3 = new ShootingRound(2);
-		ShootingRound Around4 = new ShootingRound(2);
-		ShootingResult shootResult2 = new ShootingResult(Around1, Around2, Around3, Around4);
-		FinalResult final2 = new FinalResult(shootResult2, skiResult2);
-		Athlete athlete2 = new Athlete(final2);
-		assertFalse(athlete2.betterSkiier(athlete1));
-	}
-	
-	// tests when the original athlete is a better shooter
-	@Test
-	public void testBetterShooter() {
-		SkiingResult skiResult1 = new SkiingResult(1, 2.8, 3.4, 4.5, 1.2, 0);
-		ShootingRound round1 = new ShootingRound(5);
-		ShootingRound round2 = new ShootingRound(4);
-		ShootingRound round3 = new ShootingRound(4);
-		ShootingRound round4 = new ShootingRound(5);
-		ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-		FinalResult final1 = new FinalResult(shootResult1, skiResult1);
-		Athlete athlete1 = new Athlete(final1);
-		SkiingResult skiResult2 = new SkiingResult(2, 7, 13.2, 14.5, 8, 2);
-		ShootingRound Around1 = new ShootingRound(2);
-		ShootingRound Around2 = new ShootingRound(2);
-		ShootingRound Around3 = new ShootingRound(2);
-		ShootingRound Around4 = new ShootingRound(2);
-		ShootingResult shootResult2 = new ShootingResult(Around1, Around2, Around3, Around4);
-		FinalResult final2 = new FinalResult(shootResult2, skiResult2);
-		Athlete athlete2 = new Athlete(final2);
-		assertTrue(athlete1.betterShooter(athlete2));
-	}
-	
-	// tests when the original athlete is a worse shooter
-	@Test
-	public void testWorseShooter() {
-		SkiingResult skiResult1 = new SkiingResult(1, 2.8, 3.4, 4.5, 1.2, 0);
-		ShootingRound round1 = new ShootingRound(5);
-		ShootingRound round2 = new ShootingRound(4);
-		ShootingRound round3 = new ShootingRound(4);
-		ShootingRound round4 = new ShootingRound(5);
-		ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-		FinalResult final1 = new FinalResult(shootResult1, skiResult1);
-		Athlete athlete1 = new Athlete(final1);
-		SkiingResult skiResult2 = new SkiingResult(2, 7, 13.2, 14.5, 8, 2);
-		ShootingRound Around1 = new ShootingRound(1);
-		ShootingRound Around2 = new ShootingRound(1);
-		ShootingRound Around3 = new ShootingRound(1);
-		ShootingRound Around4 = new ShootingRound(1);
-		ShootingResult shootResult2 = new ShootingResult(Around1, Around2, Around3, Around4);
-		FinalResult final2 = new FinalResult(shootResult2, skiResult2);
-		Athlete athlete2 = new Athlete(final2);
-		assertFalse(athlete2.betterShooter(athlete1));
-	}
-	
-	// tests when the original athlete is better
-	@Test
-	public void testBetterOverall() {
-		SkiingResult skiResult1 = new SkiingResult(1, 2.8, 3.4, 4.5, 1.2, 0);
-		ShootingRound round1 = new ShootingRound(5);
-		ShootingRound round2 = new ShootingRound(4);
-		ShootingRound round3 = new ShootingRound(4);
-		ShootingRound round4 = new ShootingRound(5);
-		ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-		FinalResult final1 = new FinalResult(shootResult1, skiResult1);
-		Athlete athlete1 = new Athlete(final1);
-		SkiingResult skiResult2 = new SkiingResult(2, 7, 13.2, 14.5, 8, 2);
-		ShootingRound Around1 = new ShootingRound(2);
-		ShootingRound Around2 = new ShootingRound(2);
-		ShootingRound Around3 = new ShootingRound(2);
-		ShootingRound Around4 = new ShootingRound(2);
-		ShootingResult shootResult2 = new ShootingResult(Around1, Around2, Around3, Around4);
-		FinalResult final2 = new FinalResult(shootResult2, skiResult2);
-		Athlete athlete2 = new Athlete(final2);
-		assertTrue(athlete1.hasBeaten(athlete2));
-	}
-	
-	
-	// tests when the original athlete is worse 
-	@Test
-	public void testWorseOverall() {
-		SkiingResult skiResult1 = new SkiingResult(1, 2.8, 3.4, 4.5, 1.2, 0);
-		ShootingRound round1 = new ShootingRound(5);
-		ShootingRound round2 = new ShootingRound(4);
-		ShootingRound round3 = new ShootingRound(4);
-		ShootingRound round4 = new ShootingRound(5);
-		ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-		FinalResult final1 = new FinalResult(shootResult1, skiResult1);
-		Athlete athlete1 = new Athlete(final1);
-		SkiingResult skiResult2 = new SkiingResult(2, 7, 13.2, 14.5, 8, 2);
-		ShootingRound Around1 = new ShootingRound(1);
-		ShootingRound Around2 = new ShootingRound(1);
-		ShootingRound Around3 = new ShootingRound(1);
-		ShootingRound Around4 = new ShootingRound(1);
-		ShootingResult shootResult2 = new ShootingResult(Around1, Around2, Around3, Around4);
-		FinalResult final2 = new FinalResult(shootResult2, skiResult2);
-		Athlete athlete2 = new Athlete(final2);
-		assertFalse(athlete2.hasBeaten(athlete1));
-	}
-	
-	// tests when the original athlete is worse shooter but better skier 
-		@Test
-		public void testWorseShooterBetterSkier() {
-			SkiingResult skiResult1 = new SkiingResult(1, 2.8, 3.4, 4.5, 1.2, 0);
-			ShootingRound round1 = new ShootingRound(0);
-			ShootingRound round2 = new ShootingRound(0);
-			ShootingRound round3 = new ShootingRound(0);
-			ShootingRound round4 = new ShootingRound(0);
-			ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-			FinalResult final1 = new FinalResult(shootResult1, skiResult1);
-			Athlete athlete1 = new Athlete(final1);
-			SkiingResult skiResult2 = new SkiingResult(2, 7, 13.2, 14.5, 8, 2);
-			ShootingRound Around1 = new ShootingRound(1);
-			ShootingRound Around2 = new ShootingRound(1);
-			ShootingRound Around3 = new ShootingRound(1);
-			ShootingRound Around4 = new ShootingRound(1);
-			ShootingResult shootResult2 = new ShootingResult(Around1, Around2, Around3, Around4);
-			FinalResult final2 = new FinalResult(shootResult2, skiResult2);
-			Athlete athlete2 = new Athlete(final2);
-			assertTrue(athlete2.hasBeaten(athlete1));
-		}
-		
-		// tests when the original athlete is worse shooter but better skier 
-				@Test
-				public void testWorseSkierBetterShooter() {
-					SkiingResult skiResult1 = new SkiingResult(8, 30, 30, 40, 20, 30);
-					ShootingRound round1 = new ShootingRound(5);
-					ShootingRound round2 = new ShootingRound(5);
-					ShootingRound round3 = new ShootingRound(5);
-					ShootingRound round4 = new ShootingRound(5);
-					ShootingResult shootResult1 = new ShootingResult(round1, round2, round3, round4);
-					FinalResult final1 = new FinalResult(shootResult1, skiResult1);
-					Athlete athlete1 = new Athlete(final1);
-					SkiingResult skiResult2 = new SkiingResult(1, 1, 1, 1, 1, 0);
-					ShootingRound Around1 = new ShootingRound(1);
-					ShootingRound Around2 = new ShootingRound(1);
-					ShootingRound Around3 = new ShootingRound(1);
-					ShootingRound Around4 = new ShootingRound(1);
-					ShootingResult shootResult2 = new ShootingResult(Around1, Around2, Around3, Around4);
-					FinalResult final2 = new FinalResult(shootResult2, skiResult2);
-					Athlete athlete2 = new Athlete(final2);
-					assertTrue(athlete2.hasBeaten(athlete1));
-				}
-	
 
 }
